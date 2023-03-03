@@ -2,136 +2,58 @@
 
 ## Índice
 
-* [1. Preámbulo](#1-preámbulo)
-* [2. Resumen del proyecto](#2-resumen-del-proyecto)
-* [3. Consideraciones generales](#3-consideraciones-generales)
-* [4. Hito: Criterios de aceptación mínimos del proyecto](#4-hito-criterios-de-aceptación-mínimos-del-proyecto)
-* [5. Hito Opcional: Mostrar la franquicia de tarjeta](#5-hito-opcional-mostrar-la-franquicia-de-tarjeta)
-* [6. Consideraciones técnicas](#6-consideraciones-técnicas)
-* [7. Objetivos de aprendizaje](#7-objetivos-de-aprendizaje)
-* [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)
-* [9. Para considerar Project Feedback](#9-para-considerar-project-feedback)
+* [1. Proyecto](#1-proyecto)
+* [2. Consideraciones para el usuario](#2-consideraciones-para-el-usuario)
+* [3. Pruebas unitarias de los metodos](#3-pruebas-unitarias-de-los-metodos)
+* [4. Consideraciones técnicas](#4-consideraciones-técnicas)
+* [5. Descripción de los archivos](#5-descripción-de-los-archivos)
+* [6. Objetivos de aprendizaje](#6-objetivos-de-aprendizaje)
 
 ***
 
-## 1. Preámbulo
+## 1. Proyecto
 
-El [algoritmo de Luhn](https://es.wikipedia.org/wiki/Algoritmo_de_Luhn),
-también llamado algoritmo de módulo 10, es un método de suma de verificación,
-se utiliza para validar números de identificación; tales como el IMEI de los
-celulares, tarjetas de crédito, etc.
-
-Este algoritmo es simple. Obtenemos la reversa del número a verificar (que
-solamente contiene dígitos [0-9]); a todos los números que ocupan una posición
-par se les debe multiplicar por dos, si este número es mayor o igual a 10,
-debemos sumar los dígitos del resultado; el número a verificar será válido si
-la suma de sus dígitos finales es un múltiplo de 10.
-
-![gráfica de algoritmo de Luhn](./AlgoritmoLuhn.png)
-
-## 2. Resumen del proyecto
-
-En este proyecto tendrás que construir una aplicación web que le permita a un
-usuario validar el número de una tarjeta de crédito. Además, tendrás que
-implementar funcionalidad para ocultar todos los dígitos de una tarjeta menos
-los últimos cuatro.
-
-La temática es libre. Tú debes pensar en qué situaciones de la vida real se
-necesitaría validar una tarjeta de crédito y pensar en cómo debe ser esa
-experiencia de uso (qué pantallas, explicaciones, mensajes, colores, ¿marca?)
-etc.
-
-Como continuación del proyecto de preadmisión, volverás a trabajar sobre
-fundamentos de JavaScript, incluyendo conceptos como variables, condicionales,
-y funciones, así como eventos y manipulación básica del DOM, fundamentos de
-HTML y CSS. Mientras desarrollas este proyecto, te familiarizarás con nuevos
-conceptos también.
-
-### Los objetivos generales de este proyecto son los siguientes
-
-* Trabajar en base a un boilerplate, la estructura básica de un proyecto en
-  distintas carpetas (a través modulos en JS).
-* Conocer las herramientas de mantenimiento y mejora del código (linters y
-  pruebas unitarias).
-* Aprender sobre objetos, estructuras, métodos e iteración (bucles)
-  en JavaScript
-* Implementar control de versiones con git (y la plataforma github)
-
-## 3. Consideraciones generales
-
-* Este proyecto lo resolvemos de manera **individual**. Te recomendamos una
-  duracion de 1-3 sprints.
-* Enfócate en aprender y no solamente en "completar" el proyecto.
-* Te sugerimos que no intentes saberlo todo antes de empezar a codear.
-  No te preocupes demasiado ahora por lo que _todavía_ no entiendas.
-  Irás aprendiendo.
-
-## 4. Hito: Criterios de aceptación mínimos del proyecto
-
-Estos son los requisitos que tu proyecto debe que cumplir para asegurar que tu
-trabajo cubra los objetivos principales.
-
-**1. Una interfaz que debe permitir a la usuaria:**
+El proyecto se basa en una interfaz que debe permitir al usuario:
 
 * Insertar un numero (texto) que quieres validar. Usa solo caracteres numéricos
   (dígitos) en la tarjeta a validar [0-9].  
 * Ver si el resultado es válido o no.  
-* Ocultar todos los dígitos del número de tarjeta a exepción de los últimos
+* Ocultar todos los dígitos del número de tarjeta a excepción de los últimos
   4 caracteres.  
-* No debes poder ingresar un campo vacío.  
+* No debes poder ingresar un campo vacío.
 
-**2. Pruebas unitarias de los métodos.**  
+Para lograr estos objetivos y que la pagina sea agradable con el usuario primero diseñe como sería el formato que utilizaría en HTML, así como algunos de los estilos. 
+Para realizar la validación se usa el algoritmo de Luhn, al investigar encontré que es:
+
+[Algoritmo de Luhn](https://en.wikipedia.org/wiki/Luhn_algorithm)
+
+También llamado módulo de 10 es un método de suma de verificación, que se utiliza para validar números de identificación; tales como los IMEI de los celulares, tarjetas de crédito, etc.
+Este algoritmo es simple. Obtenemos la reversa del número a verificar (que solo contiene dígitos [0-9]) a todos los números que ocupan una posición par se les debe multiplicar por dos, si ese número es mayor o igual a 10, debemos sumar los dígitos del resultado; el numero a verificar será válido si la suma de sus dígitos finales es un múltiplo de 10.
+
+* En el input o textarea se lee el valor ingresado, por ejemplo: 4083 9520 15263.
+* Después se le aplica una reversa es decir el que era el primer número pasa a ser el último y el ultimo el primero (en la imagen donde O es el numero original, r es la reversa, N° es la posición de cada número y n es la posición que le asigna cuando usamos JavaScript) 
+* Se debe multiplicar los que quedan en lugares pares (en la imagen *2 es la multiplicación de los pares)
+* Si en la multiplicación la suma da un numero mayor de 10 entonces se suman los dígitos (como aparece en la imagen en +)
+* Después sumamos los dígitos impares con los productos de la multiplicación. El numero a verificar será válido si la suma de sus dígitos finales es un múltiplo de 10 es un numero valido, si no es múltiplo es incorrecto.
+
+![gráfica de algoritmo de Luhn](./AlgoritmoLuhn.png)
+
+## 2. Consideraciones para el usuario
+
+Algunas de las funciones están diseñadas para que sean visuales, algunas otras son hacerle saber al usuario lo que se debe ingresar en cada uno de los campos, si bien en las pestañas que incluyo aun no se ha agregado una funcionalidad la parte de validación de tarjeta de crédito es la que tenía que resaltar para cumplir con las consideraciones del proyecto.
+
+Al igual que el usuario al ingresar campos vacíos lo redirecciona en el campo que hace falta por llenar, le indica los caracteres que puede usar y al final se muestra el numero de la tarjeta con una máscara, así como si esta es válida o no.
+
+* Quiénes son los principales usuarios de producto. los que quieran hacer una validación de una tarjeta de crédito.
+
+## 3. Pruebas unitarias de los metodos
+
 Los metódos de `validator` (`isValid` y `maskify`) deben tener cobertura con
-pruebas unitarias.
+pruebas unitarias. Estos se explicaran más adelante.
 
-**3. Código de tu proyecto subido a tu repo e interfaz "desplegada".**  
-El código final debe estar subido en un repositorio en GitHub. La interfaz o
-pagina web, debe ser "desplegada" (accesible públicamente online) usando
-GitHub Pages.
-  
-**4. Un README que contiene una definición del producto.**  
-En el README cuéntanos cómo pensaste en los usuarios y cuál fue tu proceso
-para definir el producto final a nivel de experiencia y de interfaz.  
-Estas preguntas sirven como guía:
+## 4. Consideraciones técnicas
 
-* Quiénes son los principales usuarios de producto.
-* Cuáles son los objetivos de estos usuarios en relación con tu producto.
-* Cómo crees que el producto que estás creando está resolviendo sus problemas.
-
-Con estos requisitos cumplidos puedes
-[considerar agendar un Project Feedback con unx coach.](#9-para-considerar-project-feedback)
-
-## 5. Hito Opcional: Mostrar la franquicia de tarjeta
-
-Las partes opcionales tienen como intención permitirte profundizar un poco más
-sobre los objetivos de aprendizaje del proyecto. Todo en la vida tiene pros y
-contras, decide sabiamente si quieres invertir el tiempo en profundizar/
-perfeccionar o aprender cosas nuevas en el siguiente proyecto.
-
-En hito 2 puedes además de validar si el número de la
-tarjeta es válida, mostrar la [franquicia](https://es.wikipedia.org/wiki/N%C3%BAmero_de_tarjeta_bancaria)
-de la tarjeta (ej: Visa, MasterCard, etc)
-usando estas [reglas de validación](https://stevemorse.org/ssn/cc.html).
-Si escribes un nuevo método para eso, hay que hacer pruebas unitarias.
-
-## 6. Consideraciones técnicas
-
-La lógica del proyecto debe estar implementada completamente en JavaScript. En
-este proyecto NO está permitido usar librerías o frameworks, solo JavaScript
-puro también conocido como Vanilla JavaScript.
-
-Para comenzar este proyecto tendrás que hacer un _fork_ y _clonar_ este
-repositorio que contiene un _boilerplate_ con tests (pruebas). Un _boilerplate_
-es la estructura basica de un proyecto que sirve como un punto de partida con
-archivos inicial y configuración basica de dependencias y tests.
-
-Los tests unitarios deben cubrir un mínimo del 70% de _statements_, _functions_
-y _lines_, y un mínimo del 50% de _branches_. El _boilerplate_ ya contiene el
-setup y configuración necesaria para ejecutar los tests (pruebas) así como _code
-coverage_ para ver el nivel de cobertura de los tests usando el comando `npm
-test`.
-
-El boilerplate que les damos contiene esta estructura:
+La estructura del proyecto es la siguiente:
 
 ```text
 ./
@@ -151,25 +73,21 @@ El boilerplate que les damos contiene esta estructura:
     └── validator.spec.js
 ```
 
-### Descripción de scripts / archivos
+### 5 Descripción de los archivos
 
-* `README.md`: debe explicar la información necesaria para el uso de tu aplicación
+* `README.md`: Explica la información necesaria para el uso de la aplicación
   web, así como una introducción a la aplicación, su funcionalidad y decisiones de
   diseño que tomaron.
-* `src/index.html`: este es el punto de entrada a tu aplicación. Este archivo
-  debe contener tu _markup_ (HTML) e incluir el CSS y JavaScript necesario.
-* `src/style.css`: este archivo debe contener las reglas de estilo. Queremos que
-  escribas tus propias reglas, por eso NO está permitido el uso de frameworks de
-  CSS (Bootstrap, Materialize, etc).
-* `src/validator.js`: acá debes implementar el objeto `validator`, el cual ya está
-  _exportado_ en el _boilerplate_. Este objeto (`validator`) debe contener dos
+* `src/index.html`: este es el punto de entrada a la aplicación.
+* `src/style.css`: este archivo debe contener las reglas de estilo.
+* `src/validator.js`: Este objeto (`validator`) contiene dos
   métodos:
   - `validator.isValid(creditCardNumber)`: `creditCardNumber` es un `string`
-     con el número de tarjeta que se va a verificar. Esta función debe retornar
-     un `boolean` dependiendo si es válida de acuerdo al [algoritmo de Luhn](https://es.wikipedia.org/wiki/Algoritmo_de_Luhn).
+     con el número de tarjeta que se va a verificar. Esta función retorna
+     un `boolean` dependiendo si es válida o no la tarjeta esto de acuerdo al [algoritmo de Luhn](https://en.wikipedia.org/wiki/Luhn_algorithm).
   - `validator.maskify(creditCardNumber)`: `creditCardNumber` es un `string` con
-    el número de tarjeta y esta función debe retornar un `string` donde todos menos
-    los últimos cuatro caracteres sean reemplazados por un numeral (`#`) o 🐱.
+    el número de tarjeta y esta función retorna un `string` donde todos menos
+    los últimos cuatro caracteres sean reemplazados por un numeral (`#`).
     Esta función deberá siempre mantener los últimos cuatro caracteres
     intactos, aún cuando el `string` sea de menor longitud.
 
@@ -185,35 +103,13 @@ El boilerplate que les damos contiene esta estructura:
 * `src/index.js`: acá debes escuchar eventos del DOM, invocar
   `validator.isValid()` y `validator.maskify()` según sea necesario y
   actualizar el resultado en la UI (interfaz de usuario).
-* `test/validator.spec.js`: este archivo contiene algunos tests de ejemplo y acá
-  tendrás que implementar los tests para `validator.isValid()` y `validator.maskify()`.
-
-El _boilerplate_ incluye tareas que ejecutan [eslint](https://eslint.org/) y
-[htmlhint](https://github.com/yaniswang/HTMLHint) para verificar el `HTML` y
-`JavaScript` con respecto a una guías de estilos. Ambas tareas se ejecutan
-automáticamente antes de ejecutar las pruebas (tests) cuando usamos el comando
-`npm run test`. En el caso de `JavaScript` estamos usando un archivo de
-configuración de `eslint` que se llama `.eslintrc` que contiene un mínimo de
-información sobre el parser que usar (qué version de JavaScript/ECMAScript), el
-entorno (browser en este caso) y las [reglas recomendadas (`"eslint:recommended"`)](https://eslint.org/docs/rules/).
-En cuanto a reglas/guías de estilo en sí,
-usaremos las recomendaciones _por defecto_ de tanto `eslint` como `htmlhint`.
+* `test/validator.spec.js`: este archivo contiene algunos tests de ejemplo para `validator.isValid()` y `validator.maskify()`.
 
 ***
 
-#### Deploy
+## 6. Objetivos de aprendizaje
 
-Hacer que los sitios estén publicados (o _desplegados_) para que usuarias de
-la web puedan acceder a él es algo común en proyectos de desarrollo de software.
-
-En este proyecto, utilizaremos _Github Pages_ para desplegar nuestro sitio web.
-
-El comando `npm run deploy` puede ayudarte con esta tarea y también puedes
- consultar su [documentación oficial](https://docs.github.com/es/pages).
-
-## 7. Objetivos de aprendizaje
-
-Reflexiona y luego marca los objetivos que has llegado a entender y aplicar en tu proyecto. Piensa en eso al decidir tu estrategia de trabajo.
+Hay que tener presentes los objetivos de aprendizaje que se realizaron al momento de realizar este proyecto así como no dejarlos de lado para seguir avanzando en el camino de la programación.
 
 ### HTML
 
@@ -374,87 +270,3 @@ Reflexiona y luego marca los objetivos que has llegado a entender y aplicar en t
 
 - [ ] **Seguir los principios básicos de diseño visual**
 
-## 8. Pistas, tips y lecturas complementarias
-
-### Prepara tu PC para trabajar
-
-1. Antes que nada, asegúrate de tener un :pencil: editor de texto en
-   condiciones, algo como [VS Code](https://code.visualstudio.com/).
-2. Para ejecutar los comandos a continuación necesitarás una :shell:
-   [UNIX Shell](https://curriculum.laboratoria.la/es/topics/shell),
-   que es un programita que interpreta líneas de comando (command-line
-   interpreter) así como tener [git](https://curriculum.laboratoria.la/es/topics/scm/01-git)
-   instalado. Si usas un sistema operativo "UNIX-like", como GNU/Linux o MacOS,
-   ya tienes una _shell_ (terminal) instalada por defecto (y probablemente `git`
-   también). Si usas Windows puedes usar la versión completa de [Cmder](https://cmder.app/)
-   que incluye [Git bash](https://git-scm.com/download/win).
-3. Tus _coaches_ te compartirán un _link_ a un repo y te darán acceso de lectura.
-Debes realizar un :fork_and_knife:
-   [fork](https://help.github.com/articles/fork-a-repo/) del repo.
-4. :arrow_down: [Clona](https://help.github.com/articles/cloning-a-repository/)
-   tu _fork_ a tu computadora (copia local).
-5. 📦 Instala las dependencias del proyecto con el comando `npm install`. Esto
-   asume que has instalado [Node.js](https://nodejs.org/) (que incluye [npm](https://docs.npmjs.com/)).
-6. Si todo ha ido bien, deberías poder ejecutar las :traffic_light:
-   pruebas unitarias (unit tests) con el comando `npm test`.
-7. Para ver la interfaz de tu programa en el navegador, usa el comando
-   `npm start` para arrancar el servidor web y dirígete a
-   `http://localhost:5000` en tu navegador.
-8. A codear se ha dicho! :rocket:
-
-### Recursos y temas relacionados
-
-Súmate al canal de Slack [#project-card-validation](https://claseslaboratoria.slack.com/archives/C03LXJ10WJD)
-
-A continuación un video de Michelle que te lleva a través del algoritmo de Luhn
-y un par de cosas más que debes saber para resolver este proyecto. ¡Escúchala
-con detenimiento y sigue sus consejos! :)
-
-[![tips credit card](https://img.youtube.com/vi/f0zL6Ot9y_w/0.jpg)](https://www.youtube.com/watch?v=f0zL6Ot9y_w)
-
-[Link](https://www.youtube.com/watch?v=f0zL6Ot9y_w)
-
-Terminal y shell de UNIX:
-
-[![Playlist de Terminal y shell de UNIX](https://img.youtube.com/vi/GB35Eyb-J4c/0.jpg)](https://www.youtube.com/playlist?list=PLiAEe0-R7u8nGH5TEHfSTeDNIvjZFe_Yd)
-
-[Link](https://www.youtube.com/playlist?list=PLiAEe0-R7u8nGH5TEHfSTeDNIvjZFe_Yd)
-
-Control de versiones y trabajo colaborativo con Git y GitHub:
-
-[![Playlist de control de versiones y trabajo colaborativo](https://img.youtube.com/vi/F1EoBbvhaqU/0.jpg)](https://www.youtube.com/playlist?list=PLiAEe0-R7u8k9o3PbT3_QdyoBW_RX8rnV)
-
-[Link](https://www.youtube.com/playlist?list=PLiAEe0-R7u8k9o3PbT3_QdyoBW_RX8rnV)
-
-Desarrollo Front-end:
-
-* Aprende más sobre [strings](https://es.javascript.info/string),
-[arreglos](https://es.javascript.info/array),
-[iterar arreglos](https://dev.to/duxtech/6-maneras-de-iterar-un-array-3fbm),
-[objetos](https://es.javascript.info/object) y
-[como definir métodos](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects#definici%C3%B3n_de_m%C3%A9todos)
-
-Organización del Trabajo:
-
-* [Metodologías Ágiles](https://www.youtube.com/watch?v=v3fLx7VHxGM)
-* [Scrum en menos de 2 minutos](https://www.youtube.com/watch?v=TRcReyRYIMg)
-* [Scrum en Detalle](https://www.youtube.com/watch?v=nOlwF3HRrAY&t=297s). No
-  esperamos que hagas todo eso desde este proyecto. Iremos profundizando poco a
-  poco a lo largo del -_bootcamp_.
-* [Blog: cómo funciona el algoritmo de Luhn](http://www.quobit.mx/asi-funciona-el-algoritmo-de-luhn-para-generar-numeros-de-tarjetas-de-credito.html).
-
-***
-
-## 9. Para considerar Project Feedback
-
-En resumen, los criterios de aceptación mínimos del proyecto para considerar
-Project Feedback:
-
-* [ ] Tiene una interfaz que permite a la usuaria saber si la tarjeta es valido
-  y ocultar el numero hasta las 4 ultimos digitos.
-* [ ] El proyecto será entregado incluyendo pruebas unitarios de los métodos de
-  `validator` (`isValid` y `maskify`).
-* [ ] El proyecto será entregado libre de _errores_ de `eslint` (_warnings_ son ok).
-* [ ] El proyecto será entregado subiendo tu código a GitHub.
-* [ ] La interfaz será "desplegada" usando GitHub Pages.
-* [ ] El README contiene una definición del producto.

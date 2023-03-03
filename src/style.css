@@ -1,0 +1,196 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background: #ddadd0;
+    padding: 5%;
+    margin-top: 2rem;
+
+}
+
+.header {
+    background: rgb(233, 170, 170);
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+}
+
+.header p {
+    margin-right: 2rem;
+    font-size: xx-large;
+    cursor: pointer;
+}
+
+.active {
+    background: #ead4e4;
+    max-width: 800px;
+    width: 90%;
+    margin: auto;
+    padding: 40px;
+    align-items: center;
+    display: flex;
+}
+
+.active[data-content]{
+    display: block;
+}
+
+.section{
+    background:  rgb(224, 197, 213);
+    max-width: 800px;
+    width: 90%;
+    margin: auto;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+}
+
+/* elementos del html */
+.creditCardForm {
+    background: #ead4e4;
+}
+
+.form-label {
+    display: block;
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.form-group-input {
+    position: relative;
+}
+
+.form-input {
+    width: 100%;
+    background: white;
+    border: 3px solid transparent;
+    border-radius: 3px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 40px 0 10px;
+    transition: .3s ease all;
+}
+
+.form-input:focus {
+    border: #0075ff;
+    outline:none;
+    box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+}
+
+.form-error {
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
+}
+
+.form-error-activo {
+    display: block;
+}
+
+.form-mensaje {
+    height: 45px;
+    line-height: 45px;
+    background: #F66060;
+    padding: 0 15px;
+    border-radius: 3px;
+    display: none;
+}
+
+.form-mensaje-activo {
+    display: block;
+}
+
+.form-mensaje p {
+    margin: 0;
+}
+
+.form-group-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-btn {
+    height: 45px;
+	line-height: 45px;
+	width: 30%;
+	background: #000;
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: .1s ease all;
+}
+
+.form-btn:hover{
+    box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+}
+
+.form-mensaje-exito {
+    font-size: 12 px;
+    color: #119200;
+    display: none;
+}
+
+.form-mensaje-exito-activo {
+    display: block;
+}
+
+/* Estilos para Validación */
+
+.form-group-correcto .form-input {
+    border: 3px solid #1ED12D;
+    opacity: 1;
+}
+
+.form-group-incorrecto .form-label {
+    color: #BB2929;
+}
+
+.form-group-incorrecto {
+    color: #BB2929;
+    opacity: 1;
+}
+
+.form-group-incorrecto .form-input {
+    border: 3px solid #BB2929;
+}
+
+.form-mensaje-incorrecto {
+    font-size: 12 px;
+    color: #F66060;
+    display: none;
+}
+
+/* elementos html */
+
+.resultado{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+
+.footer {
+    background: rgb(154, 121, 121);
+    width: 100%;
+    height: 20px;
+}
+
+[data-content] {
+    display: none;
+}
+
+@media screen and (max-width: 800px){
+    .form-btn {
+        width: 100%;
+    }
+}

@@ -1,14 +1,68 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Tarjeta de crédito válida</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header></header>
-    <main></main>
-    <footer></footer>
-    <script src="index.js" type="module"></script>
-  </body>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="img/shopping.png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css" />
+  <title>Tarjeta de crédito válida</title>
+</head>
+
+<body>
+  <header class="header">
+    <script src="content.js" defer></script>
+    <img class="img" src="img/captura58.jpg" width="200" height="80">
+    <p data-target="#inicio">Inicio</p>
+    <p data-target="#productos">Compra</p>
+    <p data-target="#pago">Pago</p>
+  </header>
+
+  <main data-content="content" class="active" id="inicio">
+    <p>Somos una empresa que se dedica a la venta de acuarela para dibujos.</p>
+    <img src="img/shopping.png">
+  </main>
+
+  <section data-content="content" class="section" id="productos">
+    <img src="img/90colores.jpg" width="500" height="300" alt="90 colores de acuarela" >
+  </section>
+
+  <section class="creditCardForm" data-content="content" id="pago">
+      <form action="" class="formulario" id="form">
+        <div class="heading">
+          <h3>Información de Tarjeta de credito</h3>
+        </div>
+        <!-- Apartado nombre -->
+        <div class="form-group" id="grupo-nombre">
+          <label for="nombre" class="form-label">Nombre del Propietario</label>
+          <input type="text" class="form-input" name="nombre" id="nombre" maxlength="60" placeholder="Ingrese nombre completo">
+          <p class="form-error">El nombre solo puede contener letras y espacios</p>
+        </div>
+
+        <!-- Apartado numero de Tarjeta -->
+        <div class="form-group" id="grupo-cardNumber">
+          <label for="cardNumber" class="form-label">Número de Tarjeta</label>
+          <input type="text" class="form-input" name="cardNumber" id="cardNumber" maxlength="19" placeholder="Ingrese número de tarjeta">
+          <p class="form-error">El numero de tarjeta solo puede contener numeros, sin espacios</p>
+        </div>
+        <div class="resultado">
+          <h5 id="ocultar"></h5>
+          <h5 id="resultado"></h5>
+        </div>
+
+        <!-- apartado boton -->
+        <div class="mensaje" id="form-mensaje">
+        <p class="form-mensaje-incorrecto">Formulario incompleto favor de llegar correctamente</p>
+        </div>
+
+        <div class="form-group form-group-btn" id="payNow">
+          <button type="button" class="form-btn" id="btnValidar">Confirmar</button>
+          <p class="form-mensaje-exito">Formulario rellenado correctamente</p>
+        </div>
+      </form>
+      <script src="index.js" type="module" align="left"></script>
+  </section>
+  <footer class="footer">Copyright 2022© Elizabeth Pineda</footer>
+</body>
 </html>
